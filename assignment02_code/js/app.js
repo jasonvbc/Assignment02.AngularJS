@@ -16,11 +16,37 @@ myApp.config(function($routeProvider){
             templateUrl: 'views/resultview.html',
             controller: 'resultController'
         })
+
+        .otherwise({
+            redirectTo: '/'
+        });
 });
 
 myApp.controller('mainController', ['$scope', '$location', function($scope, $location){
 
-    $scope.title = 'AngularJS Custom Directive - Form Submit';
 
 }]);
 
+myApp.directive('loginForm', function(){
+
+    return {
+        restrict: 'AEC',
+        templateUrl: 'directives/loginform.html',
+        replace: true,
+        scope: {
+
+        },
+        compile: function(elem, attrs){
+            console.log('Compile...');
+            console.log(elem);
+            console.log(attrs);
+        },
+        link: function(scope, elements, attrs){
+            console.log('Link...');
+            console.log(scope);
+            console.log(elements);
+            console.log(attrs);
+        }
+    }
+
+});
