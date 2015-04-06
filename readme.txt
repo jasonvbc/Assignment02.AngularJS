@@ -1,1 +1,1 @@
-https://github.com/Jasonliuhao/Assignment02.AngularJS.git
+https://github.com/jasonvbc/Assignment02.AngularJS.git
