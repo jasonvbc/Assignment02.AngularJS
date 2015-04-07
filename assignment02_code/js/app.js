@@ -22,8 +22,28 @@ myApp.config(function($routeProvider){
         });
 });
 
-myApp.controller('mainController', ['$scope', '$location', function($scope, $location){
+myApp.service('nameService', function(){
 
+    var self = this;
+    this.username = '';
+
+});
+
+myApp.controller('mainController', ['$scope', '$location', 'nameService', function($scope, $location, nameService){
+
+    $scope.username = nameService.username;
+    $scope.$watch('username', function(){
+        nameService.username = $scope.username;
+    })
+
+}]);
+
+myApp.controller('resultController', ['$scope', '$location', 'nameService', function($scope, $location, nameService){
+
+    $scope.username = nameService.username;
+    $scope.$watch('username', function(){
+        nameService.username = $scope.username;
+    })
 
 }]);
 
@@ -32,21 +52,7 @@ myApp.directive('loginForm', function(){
     return {
         restrict: 'AEC',
         templateUrl: 'directives/loginform.html',
-        replace: true,
-        scope: {
-
-        },
-        compile: function(elem, attrs){
-            console.log('Compile...');
-            console.log(elem);
-            console.log(attrs);
-        },
-        link: function(scope, elements, attrs){
-            console.log('Link...');
-            console.log(scope);
-            console.log(elements);
-            console.log(attrs);
-        }
+        replace: true
     }
 
 });
